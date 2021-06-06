@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Visualización CSS</title>
+
+	<style>
+		html {
+			font-family: sans-serif;
+			font-size: 16px;
+		}
+
+		div {
+			background-color: orange;
+		}
+
+		span {
+			background-color: skyblue;
+		}
+
+		.numbers li {
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			color: #FFF;
+			background-color: #205081;
+			border: thin solid #FF5700;
+		}
+
+		/*Existen dos propiedades para cambiar la visualización, estas son display y visibility. Visibility afecta la visualización del contenido de una caja (puede tener como valor hidden, visible, collapse, initial
+		o inherit),el contenido puede ser texto, embebido, imágenes etc. Igual se ocultará la caja, pero al usar visibility se mantiene el espacio que ocupaba el elemento aunque se oculte, es como un opacity con 
+		valor 0. En cambio la propiedad display si va a afectar el comportamiento de la caja, es decir, si actúa como bloque, como elemento de línea, y si se "oculta"  con display none, el espacio del elemento deja 
+		de existir. Entonces, visibility afecta visualización y display visualización y comportamiento. */
+		.numbers li:nth-child(5) {
+			visibility: hidden;
+			/*El display puede tener varios valores, los más comunes son inline, blocl y none que son de línea, bloque y ocultar. Flex es para flebox, inline-block que es una técnica de maquetación que vamos a aprender,
+			list-item de display de los li en una lista. Run-in que hace que el elemento actúe como bloque o de línea dependiendo del contexto. Hay varios valores con table que son las distintas formas de visualizar 
+			los elementos de una tabla (como una fila, una celda, una columna, una cabecera de tabla, etc.), display es la propiedad que nos servirá para maquetar, no el visibility */
+			/* display: none; */
+		}
+
+		/*Jon menciona que todas la etiquetas en html tienen un display block o inline. Las etiquetas más familiarizados con display inline son aquellas que tienen que ver con edición de texto o que contienen hasta cierto
+		punto contenido que no es texto, como videos, imágenes, audios, etc. Las cajas de bloque son asquellas que nos sirven para maquetar o definir zonas de contenido, como las etiquetas semánticas de html5 (aside,
+		 footer, header, section, div, etc.) */
+
+		.basics li:last-child {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Tipos de Visualización</h1>
+	<ul>
+		<li><a href="http://www.w3schools.com/cssref/pr_class_visibility.asp" target="_blank">Visibility</a>: Afecta la
+			visualización del contenido de una caja</li>
+		<li><a href="http://www.w3schools.com/cssref/pr_class_display.asp" target="_blank">Display</a>: Afecta la
+			visualización de la caja</li>
+	</ul>
+	<ul class="numbers">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+	</ul>
+	<h2>Tipos de Display Básicos</h2>
+	<ul class="basics">
+		<li>
+			<div>Bloque: Ocupa todo el ancho disponible</div>
+		</li>
+		<li><span>Línea: Ocupa sólo el ancho requerido</span></li>
+		<li>
+			<div>Ninguno</div>
+		</li>
+	</ul>
+	<h2>Tipos de Display para maquetar</h2>
+	<ul>
+		<li>inline-block</li>
+		<li>table</li>
+		<li>flex</li>
+	</ul>
+</body>
+
+</html>

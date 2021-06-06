@@ -1,0 +1,64 @@
+h1,
+h2,
+h3 {
+	margin: 1rem auto;
+}
+
+
+.container {
+	padding: 1rem;
+}
+
+.item {
+	/* Aquí se presentó un problema, primero se explicó que los elementos flotantes tienen un z-index mayor porque es su naturaleza y se muestran encima de sus contenedores y además los contenedores no respetan
+	la altura de los hijo, para esto, se debe crear una clase clear con la propiedad clear y el valor both, left o right (en este caso se cleará both). NO SE DEBEN CREAR DIVS VACÍOS PARA LA LIMPIEZA DE FLOTADOS,
+	ANTES SE HACÍA ASÍ, EN CAMBIO AHORA SE APLICA EN LAS ETIQUETAS SEMÁNTICAS, EN ESTE CASO SE APLICARON LAS CLASES A LOS ELEMENTOS SECTION, la clase está en layout.css*/
+	height: 100px;
+	padding: 1rem;
+	font-size: 2rem;
+	border: thin solid #FF5700;
+}
+
+
+/* El profesor explica que no recomienda usar floats a menos que se haga un proyecto para navegadores viejos, luego explica que un buen uso de floats es cuando se quiere posicionar una lista en dos o más columnas
+porque si se trata de hacer esto con display y cualquier valor que implique el posicionamiento deseado, los elementos li pierden las viñetas o la numeración */
+
+/* También explica que otro uso común es al querer poner una imagen junto a un texto, se agrega la clase floatl y así la imagen se va a la izquierda y el texto del párrafo va al lado de la imagen */
+.float-usos {
+	text-align: left;
+	background-color: #222;
+}
+
+.float-usos p {
+	font-size: 2rem;
+}
+
+.lista li {
+	/* las siguientes dos propiedades son un ejemplo del resultado que se obtiene con display inline block, si se activan se consigue un listado a dos columnas pero la lista pierde su numeración o viñetas */
+	/* width: 40%; */
+	/* display: inline-block; */
+	/* Con esto se habrá conseguido el listado a dos columnas manteniendo sus viñetas y números */
+	float: left;
+	width: 40%;
+}
+
+/* Con los estilos anteriores se coloca la lista en orden de izquierda a derecha, se puede jugar con el selector :nth-child para que aparezcan en el orden que queramos, por ejemplos si queremos que vaya del 
+1 al 5 de un lado y del 6 al 10 al otro lado */
+
+table {
+	/*por defecto la tabla actúan como bloques,	pero esto se puede cambiar si se aplica un display inline-table, se sigue comportando como tablas pero en línea (una al lado de otra) */
+	display: inline-table;
+	margin: auto;
+	background-color: #CCC;
+	border: thin solid #FF5700;
+	/* Esta propiedad se usa para eliminar un espacio que se forma entre los bordes de las celdas de la tabla, este espacio se forma con el valor separate y se elimina con el valor collapse. Separate separa los 
+	bordes se los elementos contenidos y también dichos bordes con el borde de la tabla como tal */
+	border-collapse: collapse;
+}
+
+td {
+	padding: 1rem;
+	font-size: 2rem;
+	background-color: #222;
+	border: thin solid #FF5700;
+}

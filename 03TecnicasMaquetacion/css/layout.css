@@ -1,0 +1,112 @@
+/* Esto es lo que se define luego de haber hecho la retícula del proyecto */
+
+/* Técnica 1 float left/right; */
+
+.floatl {
+	float: left;
+}
+
+.floatr {
+	float: right;
+}
+
+/* Para limpiar los flotados se usa este selector, se seleccionan los elementos con clase clear, y lo que haya antes y después de dicho elemento con clase clear y se aplicar la propiedad clear: both, left o right. 
+Con after y before es como si se crearan unos elementos antes y después, que estarán vacíos, es como el div vacío solo que no nos penaliza el navegador, esta es la forma correcta de hacerlo, aplicando la clase que
+limpia los flotados al elemento contenedor  */
+.clear,
+.clear::after,
+.clear::before {
+	clear: both;
+}
+
+.clear::after,
+.clear::before {
+
+	/* Para que funcionen los pseudoelementos ::after y ::before se debe agregar una propiedad content, esta muestra lo que se agregará antes y después del elemento con clase clear, en este caso es el espacio vacío
+	así que se deja en blanco y solo se copian dos comillas */
+	content: " ";
+	/* También es importante agregar esto porque lo que se genera con la propiedad content no tiene ninguna disposición o valor CSS por default, entonces como servirá para limpiar los elementos que haya previamente y
+	 posteriormente, le debemos darle un display de bloque para que abarque todo el espacio horizontal, es como el div vacío solo que aprovechando los psudoelementos de CSS */
+	display: block;
+}
+
+/* Técnica 2 display:inline-block; */
+
+/* Aquí se definen las clases para la maquetación con display inline-block, cuando se aplica un inline-block a un elemento sea de línea o de bloque, conserva las características de bloque en el sentido de que va a 
+desplazar los siguientes elementos que no estén pegados a el, hacia arriba o abajo dependiendo de su posición en el html. Pero con los elementos que tenga al lado va a compartir el espacio si el ancho lo permite.
+Cuando se usa un elemento con inline-block se genera un pequeño espacio en blanco entre cada elemento. Un dato interesante es que el espacio en blanco se elimina si pegamos la etiqueta de cierre y la de apertura
+de los elementos que se separan (la estiquetas en el html, es como eliminar la indentación), pero esto no es nada práctico porque no se apreciará bien el código */
+
+/* otra forma es hacer un comentario vacío entre la etiqueta de cierre y la de apertura de los elementos que se separan. A pesar de que no se rompe tanto la identación, semánticamente está mal */
+
+/* Más abajo se explica cómo de hace correctamente la eliminación de este espacio que se genera, justo antes de la clase f0 */
+
+/* Al aplicar esta clase se comienzan a apilar los elementos pero no quedan por completo como queremos */
+.i-b {
+	display: inline-block;
+}
+
+/* Cada vez que trabajemos con inline-block también trabajaremos con la alineación vertical, la propiedad vertical-align tiene como valor por defecto baseline, las propiedades que trabajan con texto tienen este valor.
+baseline significa la línea base desde donde se comienza a dibujar el texto (cuando se resalta un texto, donde acaba el sombreado es baseline). Es importante aclarar que baseline va a ser el del elemento padre, es
+decir que si copiamos un texto dentro del contenedor y aplicamos un vertical align basline a los elementos hijos, tanto el texto del contenedor como el de los elementos hijos estarán alineados en su base. En este
+caso el texto dentro de las cajas se alínea con el que está afuera, pero es importante aclarar que lo que se está alineando es el elemento hijo y no su contenido. Entonces vertical-align trabaja en base a la posición
+del elemento padre */
+.v-baseline {
+	vertical-align: baseline;
+}
+
+/* El valor bottom es la alineación hacia abajo, donde acaba el contenedor, los elementos hijos se alínean entre sí por su parte inferior. Si hay un elemento más grande, el resto de elementos más pequeños se alinearán  
+con la parte inferior del elemento más grande, porque todos se están alineando con el vertical-align bottom del padre */
+.v-bottom {
+	vertical-align: bottom;
+}
+
+/* El valor middle es alineación al centro. se alínean los elementos en base al centro del elemento padre, y si hay un elemento más grande, los elementos más pequeños se verán alineados al centro en comparación con
+el elemento más grande */
+.v-middle {
+	vertical-align: middle;
+}
+
+/* Y el valor top es alineación hacia arriba. todos estos valores son los más utilizados y se usa el vertical-align porque va de la mano con inline-block */
+.v-top {
+	vertical-align: top;
+}
+
+/* Si los elementos hijos con inline-block tienen el mismo tamaño no se verá ninguna diferencia al cambiar su vertical align */
+
+/* Si escribimos un texto dentro de un contenedor las letras aparecerán en el aunque no esté dentro de una etiqueta, es decir que los contenedores tienen un tamaño de letra, en el reset establecimos un tamaño de
+letra de un rem, es decir 16px. El espacio en blanco se genera por este tamaño de letra, para eliminar el espacio entonces aplicamos al contenedor un font-size:0. Esa es la forma correcta de hacerlo, para perder
+el espacio en blanco que nos arruina la maquetación, el elemento padre de los elementos con inline-block deben tener un tamaño de letra 0 */
+.f0 {
+	font-size: 0;
+}
+
+/*
+
+/* Técnica 3 display:table; */
+
+/* Esto lo que hace es dar estilos de tabla a los elementos, es decir, el elemento se va a visualizar en forma de tabla */
+
+.table {
+	display: table;
+}
+
+
+.table-cell {
+	display: table-cell;
+}
+
+
+/* Técnica 4 display:flex; */
+
+
+
+.flex {
+	display: flex;
+}
+
+
+/* flex:none es uno de los valores iniciales que tienen los elementos hijos dentro del modelo de la caja flexible */
+.flex-item {
+	flex: none;
+}

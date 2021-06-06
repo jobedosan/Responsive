@@ -1,0 +1,117 @@
+/* En esta plantilla se escriben los estilos para la retícula, aquí definimos las características para los elementos contenedores y los elementos hijos. Se pueden tener elementos fijo (que sean flexibles pero que
+lleguen a un límite, es decir el elemento tendrá un tamaño máximo) o elementos que fluyan totalmente a lo largo de la pantalla. Esta es la diferencia de un elemento fijo a uno fluido, el fluido se seguirá
+expandiendo junto al redimensionamiento de la pantalla si es necesario, en cambio los fijos como dijimos tendrán un límite para redimensionarse y abarcarán un ancho o altura máximos. Se hace una mezcla de ambos 
+contenedores. Se hace un contenedor fluido para encerrar a uno fijo */
+
+.container,
+.container-fluid {
+	/* Los contenedores siempre tendrán un display block */
+	display: block;
+
+	/* Un ancho del 100% para los contenedores fluidos, luego se redefine el ancho máximo para los contenedores fijos */
+	width: 100%;
+	/* Con esto se define un espaciado entre cada elemento padre que será un contenedor fijo y se centra con el valor auto a los lados */
+
+	margin: 1rem auto;
+	text-align: left;
+	background-color: #CCC;
+}
+
+.container {
+	max-width: 1200px;
+}
+
+.caja2 {
+	max-width: 1200px;
+	margin: auto;
+}
+
+.item {
+	display: block;
+	text-align: center;
+	background-color: #222;
+}
+
+/* 
+Aquí se calcula la cantidad de columnas que tendrá nuestra retícula, y se hace con una regla de 3
+
+	Los anchos se calculan por regla de 3
+	Mi reticula es de 12 columnas
+	Mi base de 960px
+
+	12col -----> 960px;
+	número de-col -----> ???px
+	
+	( n-col * 960px ) / 12col = resultado en px
+
+	( 6col * 960px ) / 12col = 480px
+	( 1col * 960px ) / 12col = 80px
+
+	Ahora lo que pasa es que en la formula no se pienza en una medida de pixeles fija, sino en porcentaje, para etso se hace la siguiente operación
+
+Mi reticula es de 12 columnas pero la base no son 960px sino el 100% de la pantalla, entonces la operación queda así
+
+
+(n-col * 100%) / 12col=resultado en % 
+
+columna entre columna se va y queda el resultado en porcentajes
+
+(n * 100%) / 12 =resultado en %
+
+Para calcular el procentaje ocupado por once columnas se calcula entonces
+
+(11 * 100) / 12 = 91.66666666666667%
+
+Se debe copiar el resultado exacto obtenido en esta operación, y así se calculará cada columna
+
+*/
+
+
+
+.c12 {
+	width: 100%;
+}
+
+.c11 {
+	width: 91.66666666666667%;
+}
+
+.c10 {
+	width: 83.33333333333333%;
+}
+
+.c9 {
+	width: 75%;
+}
+
+.c8 {
+	width: 66.66666666666667%;
+}
+
+.c7 {
+	width: 58.33333333333333%;
+}
+
+.c6 {
+	width: 50%;
+}
+
+.c5 {
+	width: 41.66666666666667%;
+}
+
+.c4 {
+	width: 33.33333333333333%;
+}
+
+.c3 {
+	width: 25%;
+}
+
+.c2 {
+	width: 16.66666666666667%;
+}
+
+.c1 {
+	width: 8.333333333333333%;
+}

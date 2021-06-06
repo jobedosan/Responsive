@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Posicionamiento CSS</title>
+
+	<style>
+		html {
+			font-family: sans-serif;
+			font-size: 16px;
+		}
+
+		div {
+			Este es el posicionamiento por defecto de los elementos,
+			el valor es static position: static;
+			width: 300px;
+			height: 100px;
+			text-align: center;
+			color: #FFF;
+			background-color: #205081;
+			border: thin solid #FF5700;
+		}
+
+		/* Aquí Jon nos demostró cómo este selector termina aplicando un color de fondo al primer div, cuando podríamos llegar a pensar que es el tercero, lo que pasa es que el selector selecciona al tercer hijo que 
+		sea un div, y casualmente coincide con que hay un tercer hijo que es un div (el tercer hijo del body es un div), si el tercer hijo no fuera un div el estilo no se aplicaría a nadie, para seleccionar el tercer 
+		div hay que utilizar la pseudoclase nth-of-type, como se puede ver en la siguiente regla div:nth-child(3) { z-index: 1 } */
+
+		/* Con este pseudoclase si se seleccionó el tercer hijo de tipo div, solo existe uno en toda la página, si hubiera otro tercero dentro de otro elemento también se aplicaría */
+		div:nth-of-type(3) {
+			background-color: red;
+			z-index: 1
+		}
+
+		article,
+		section {
+			width: 700px;
+			height: 200px;
+			color: #FFF;
+			background-color: #222;
+			border: thin solid #FF5700;
+		}
+
+		section {
+			position: relative;
+			width: 800px;
+			height: 400px;
+		}
+
+		.pos-rel {
+			/* Con esta propiedad el posicionamiento del elemento será relativo al posicionamiento original del elemento cuando	tiene el valor static, es decir, se reposiciona el elemento con las propiedades que
+			controlan el margen horizontal (right o left) o el margen vertical (top o bottom). Estas propiedades se utilizan cuando se estableió un posicionamiento relativo. No son las propiedades de margin-top,
+			etc. Las popiedades son tal cual: top, left, etc. (El origen de los elementos es la esquina superior izquierda, desde allí se reposicionan según los valores aplicados a left, right, top y bottom). Al
+			reposicionar un elemento de esta forma los demás se mantienen en su lugar, en cambio con margin se desplazan todos los elementos. Al mantenerse el resto de elementos en su lugar, con este tipo de
+			posicionamiento pueden llegar a superponerse */
+			position: relative;
+			/* Es importante que no se puede trabajar con propiedades contrarias, si se agrega top ya no se puede usar bottom y
+			si se usa right ya no se puede usar left. Top y left tienen prioridad, se tomarán en cuenta
+			por encima de bottom y right, no importa si se posicionan de primero o de último, se tomará en cuenta top y left
+			siempre */
+			top: -10px;
+			left: 250px;
+			/* 
+			bottom: -250px;
+			right: -150px;
+			*/
+		}
+
+		.pos-abs {
+			/* Al agregar la propiedad position:absolute el elemento se mantiene en su lugar, no se logra nada, es necesario agregar top, left, right o bottom para conseguir un resultado pues trabaja en conjunto
+			con dichas propiedades */
+			position: absolute;
+			/* Luego al agregar top, left, right o bottom, el elemento se desplazará en base al body porque no tiene un elemento padre con posicionamiento relativo. Sin un elemento padre el elemento se desplaza desde
+			el origen del body (la esquina superior izquierda de la página). Pero si el elemento tiene un padre con	posicionamiento relativo (obligatorio), el elemento con posicionamiento absoluto se desplazará dentro 
+			del padre lo mismo que se indique con las propiedades top, left, right o bottom, como se puede ver en la caja 4 */
+			top: 50px;
+			left: 250px;
+		}
+
+		.pos-fix {
+			/* El posicionamiento fijo hace que el elemento se mantenga en un mismo lugar (fijo), si no se coloca un valor de top, left, right o bottom, el elemento desaparece. Este tipo de posicionamiento sirve para
+			cuando queramos queramos hacer cabeceras, pies de página, o para webs de una sola página. Fixed también se posiciona según el origen del body. A diferencia de los otros posicionamientos, aunque se haga 
+			scroll, el elemento nunca se pierde, es decir que los valores del posicionamiento fijo se basan en el área de visualización (es decir, del viewport). Los elementos definidos de último tendrán más 
+			importancia respecto a la capa en que se muetran (taparán a los otros elementos), para cambiar esto se puede usar la propiedad z-index, su valor por defecto es 0, mientras mayor valor más al frente se 
+			mustran y mientras menor el valor más al fondo se muestran. Sin embargo, aunque todos tengan valor 0 inicialmente, los elementos se van mostrando más adelante según el orden en que están en el html. 
+			Mientras antes estén más atrás se muestran y viceversa */
+			position: fixed;
+			top: 0;
+			left: 100px;
+			/* Esta es una de las propiedades que se puede cambiar cuando el position es static */
+			z-index: -1;
+		}
+
+		/* Este posicionamiento es experimental y permite que el elemento sea relativo o fijo dependiendo de donde se visualiza (el curso tiene años así que hay que ver si en realidad sigue siendo experimental como
+		se menciona o ya es soportado por todos los navegadores). Si sigue siendo experimental, hay una forma de crear una solución para los navegadores que no soportan este tipo de posicionamiento con javascript.
+		Un ejemplo sencillo de este posicionamiento es un menú que tiene un posicionamiento relativo hasta que llega a la parte superior de la pantalla y pasa a ser fijo para mostrarse al resto de la página al hacer
+		scroll (ya es soportado este posicionamiento por chrome). Cuando se coloca top el elemento se vuelve fixed cuando toca la parte superior de viewport, si se coloca bottom pasa lo contrario */
+		.pos-sticky {
+			/* http://caniuse.com/#search=sticky */
+			position: sticky;
+			top: 0;
+			left: 100px;
+		}
+
+		.pos-float-left {
+			float: left;
+		}
+
+		.pos-float-right {
+			float: right;
+		}
+
+		.clear {
+			clear: both;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Tipos de Posicionamiento</h1>
+	<ul>
+		<li>Estático: Es el que viene por defecto un elemento detrás del otro</li>
+		<li>Relativo: Se desplaza respecto de su posición original</li>
+		<li>Absoluto: Se desplaza respecto de la posición del body del documento o del primer elemento padre que tenga y
+			éste sea relativo</li>
+		<li>Fijo: Permite mantener fijo un elemento</li>
+		<li>Pegajoso: Posicionamiento experimental, permite que el elemento sea relativo o fijo dependiendo del area
+			donde se visualiza</li>
+		<li>Flotante: Convierte un elemento en flotante desplazándolo hasta la zona más a la izquierda o más a la
+			derecha de la posición en la que originalmente se encontraba</li>
+		<li><a href="http://librosweb.es/libro/css/capitulo_5.html" target="_blank">+ info</a></li>
+	</ul>
+	<div>
+		<h2>1 - Estático</h2>
+	</div>
+	<div class="pos-rel">
+		<h2>2 - Relativo</h2>
+	</div>
+	<div class="pos-abs">
+		<h2>3 - Absoluto con body</h2>
+	</div>
+
+	<section>
+		<article>
+			<div class="pos-abs">
+				<h2>4 - Absoluto con padre relativo</h2>
+			</div>
+		</article>
+	</section>
+
+	<div class="pos-fix">
+		<h2>5 - Fijo</h2>
+	</div>
+	<div class="pos-sticky">
+		<h2>6 - Pegajoso</h2>
+	</div>
+	<div class="pos-float-left">
+		<h2>7 - Flotante Izquierda</h2>
+	</div>
+	<div class="pos-float-right">
+		<h2>8 - Flotante Derecha</h2>
+	</div>
+	<div class="pos-float-right">
+		<h2>9 - Flotante Derecha</h2>
+	</div>
+	<!-- Jon menciona que una forma en que se hacía antes el limpiado de flotados era colocando un div vacío con la clase clear, y a dicho div se le aplicaría la propiedad clear. Pero señala que los navegadores
+	nos penalizan a nivel de SEO por tener un div vacío, así que se lo aplica a la etiqueta de apertura del elemento que queremos que deje de flotar y así limpia el flotado, más adelante explicará cuál es la forma
+	correcta para limpiar flotados -->
+	<div class="clear">
+		<h2>10 - con clear para limpiar floats</h2>
+	</div>
+</body>
+
+</html>

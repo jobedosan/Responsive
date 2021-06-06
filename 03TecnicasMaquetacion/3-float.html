@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Float</title>
+	<!-- Este archivo es para reset -->
+	<link rel="stylesheet" href="css/reset.css">
+	<!-- Este archivo es para retícula -->
+	<link rel="stylesheet" href="css/grid.css">
+	<!-- Este archivo es para las técnicas de maquetación -->
+	<link rel="stylesheet" href="css/layout.css">
+	<!-- Este archivo es para los estilos como tal   -->
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<!-- Para la maquetación CSS primero necesitamos resetear las etiquetas de html, hay dos opciones que son reset CSS y normalize. Pero podemos trabajar con nuestro
+	propio archivo de reset que se adapte a nuestra técnica de maquetación (es importante no olvidar el box-sizing) -->
+
+	<!-- Luego de la hoja de reset, lo siguiente es pensar en cómo se trabajará la retícula del sitio web. Si se ha trabajado con un framework ya se habrá visto que cuando
+	se necesita un elemento, se dibuja una fila y el ancho del elemento se basa en la cantidad de columnas que tiene la fila (como en bootstrap). Entonces basándonos en 
+	este hecho es claro que la mayoría de frameworks lo que hacen es generar una caja contenedora por cada fila de contenido. Esto se menciona es la retícula y es lo que
+	se tiene que establecer luego de hacer el reset de nuestro microframework y posteriormente vienen los códigos para maquetar (si se quiere hacer la maquetación con floats,
+	display table, display inline-block, flex, etc.) -->
+
+	<!-- Después de lo anterior vienen los estilos particulares que tengamos que aplicar a las necesidades de cada proyecto -->
+
+	<h1>Maquetando con Float</h1>
+	<section class="container  clear">
+		<article class="item  c12  floatl">A</article>
+	</section>
+	<section class="container  clear">
+		<article class="item  c4  floatl">B</article>
+		<article class="item  c4  floatl">C</article>
+		<article class="item  c4  floatl">D</article>
+	</section>
+	<section class="container  clear">
+		<article class="item  c6  floatl">E</article>
+		<article class="item  c6  floatl">F</article>
+	</section>
+
+
+	<h2>Usos de Float</h2>
+	<h3>Imágenes mezcladas con texto</h3>
+	<article class="float-usos">
+		<img class="floatl" src="./img/450_1000.jpg" width="200px" height="200px">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. In esse itaque qui quam vero consequatur nemo
+			ipsam nihil, iste, totam porro! Blanditiis iusto, praesentium consectetur recusandae dolorum corporis
+			itaque. Nam.
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. In esse itaque qui quam vero consequatur nemo
+			ipsam nihil, iste, totam porro! Blanditiis iusto, praesentium consectetur recusandae dolorum corporis
+			itaque. Nam.
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. In esse itaque qui quam vero consequatur nemo
+			ipsam nihil, iste, totam porro! Blanditiis iusto, praesentium consectetur recusandae dolorum corporis
+			itaque. Nam.
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. In esse itaque qui quam vero consequatur nemo
+			ipsam nihil, iste, totam porro! Blanditiis iusto, praesentium consectetur recusandae dolorum corporis
+			itaque. Nam.
+		</p>
+	</article>
+
+
+	<h3>Listas ordenadas y desordenadas en columnas</h3>
+	<ol class="lista">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ol>
+	<ul class="lista">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+</body>
+
+</html>
